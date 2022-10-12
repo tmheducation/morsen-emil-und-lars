@@ -65,12 +65,20 @@ radio.onReceivedString(function (receivedString) {
     }
 })
 let Wort = ""
-if (input.pinIsPressed(TouchPin.P1)) {
-    radio.setGroup(100 - 1)
-}
-if (input.pinIsPressed(TouchPin.P2)) {
-    radio.setGroup(100 + 1)
-}
-while (input.pinIsPressed(TouchPin.P3)) {
-    break;
+let Gruppe_merk = 0
+while (!(input.pinIsPressed(TouchPin.P3))) {
+    if (input.pinIsPressed(TouchPin.P1)) {
+        radio.setGroup(0 - 1)
+        Gruppe_merk += 0 - 1
+        basic.showNumber(Gruppe_merk)
+        basic.pause(500)
+        basic.clearScreen()
+    }
+    if (input.pinIsPressed(TouchPin.P2)) {
+        radio.setGroup(0 + 1)
+        Gruppe_merk += 0 + 1
+        basic.showNumber(Gruppe_merk)
+        basic.pause(500)
+        basic.clearScreen()
+    }
 }
