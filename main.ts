@@ -1,4 +1,7 @@
 let Wort = ""
+input.onPinTouchEvent(TouchPin.P1, input.buttonEventDown(), function () {
+	
+})
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     Wort = "" + Wort + "."
     basic.setLedColor(0x00ffff)
@@ -14,7 +17,7 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     basic.turnRgbLedOff()
 })
 input.onButtonEvent(Button.AB, input.buttonEventClick(), function () {
-    radio.sendString("" + (Wort))
+    radio.sendString(Wort)
     basic.pause(100)
     Wort = ""
     basic.setLedColor(0xff0000)
@@ -64,6 +67,9 @@ radio.onReceivedString(function (receivedString) {
             basic.pause(100)
         }
     }
+})
+input.onPinTouchEvent(TouchPin.P2, input.buttonEventDown(), function () {
+	
 })
 basic.forever(function () {
     radio.setGroup(17)
