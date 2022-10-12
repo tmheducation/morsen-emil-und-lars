@@ -1,7 +1,3 @@
-let Wort = ""
-input.onPinTouchEvent(TouchPin.P1, input.buttonEventDown(), function () {
-	
-})
 input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
     Wort = "" + Wort + "."
     basic.setLedColor(0x00ffff)
@@ -68,9 +64,13 @@ radio.onReceivedString(function (receivedString) {
         }
     }
 })
-input.onPinTouchEvent(TouchPin.P2, input.buttonEventDown(), function () {
-	
-})
-basic.forever(function () {
-    radio.setGroup(17)
-})
+let Wort = ""
+if (input.pinIsPressed(TouchPin.P1)) {
+    radio.setGroup(100 - 1)
+}
+if (input.pinIsPressed(TouchPin.P2)) {
+    radio.setGroup(100 + 1)
+}
+while (input.pinIsPressed(TouchPin.P3)) {
+    break;
+}
